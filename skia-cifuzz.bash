@@ -4,6 +4,8 @@ export WORKDIR=/tmp/cifuzz-workdir
 
 # Make this script idempotent
 rm -rf $WORKDIR
+# cifuzz.bash will use this directory
+rm -rf /tmp/cifuzz
 mkdir $WORKDIR
 
 git clone https://skia.googlesource.com/skia.git --depth 1 $WORKDIR/skia
