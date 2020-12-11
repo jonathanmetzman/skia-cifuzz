@@ -20,8 +20,10 @@ set -ex
 git clone https://github.com/google/oss-fuzz.git --depth 1
 docker pull gcr.io/oss-fuzz-base/cifuzz-base:latest
 
-docker build -t gcr.io/oss-fuzz-base/build_fuzzers oss-fuzz/infra/cifuzz/actions/build_fuzzers
-docker build -t gcr.io/oss-fuzz-base/run_fuzzers oss-fuzz/infra/cifuzz/actions/run_fuzzers
+cd oss-fuzz/infra
+docker build -t gcr.io/oss-fuzz-base/build_fuzzers --file build_fuzzers.Dockerfile  .
+docker build -t gcr.io/oss-fuzz-base/run_fuzzers --file run_fuzzers.Dockerfile .
+cd -
 
 # export GITHUB_REPOSITORY=$REPO_NAME
 
